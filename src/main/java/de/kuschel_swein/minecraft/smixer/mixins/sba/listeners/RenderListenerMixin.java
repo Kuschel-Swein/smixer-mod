@@ -6,6 +6,8 @@ import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import de.kuschel_swein.minecraft.smixer.abstraction.sba.core.MixedFeature;
 import de.kuschel_swein.minecraft.smixer.contracts.sba.utils.MixedUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.GuiIngameForge;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -14,6 +16,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(RenderListener.class)
 public class RenderListenerMixin {
+
+    @Inject(
+            method = "onRenderRemoveBars",
+            at = @At("TAIL"),
+            remap = false
+    )
+    private void injectRiftCheckToOnRenderRemoveBars(RenderGameOverlayEvent.Pre event, CallbackInfo callback) {
+        if (event.type == RenderGameOverlayEvent.ElementType.ALL) {
+            if (!GuiIngameForge.renderHealth) {
+                if (MixedUtils.getInstance().isInRift()) {
+                    GuiIngameForge.renderHealth = MixedFeature.HEALTH_SHOW_IN_RIFT.isEnabled();
+                }
+            }
+        }
+    }
 
     @Inject(
             method = "drawBar",
