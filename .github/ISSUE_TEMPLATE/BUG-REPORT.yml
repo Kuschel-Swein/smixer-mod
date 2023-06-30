@@ -41,7 +41,6 @@ body:
       label: Operating System
       placeholder: |
         Windows 11
-        Windows 10
     validations:
       required: true
   - type: textarea
