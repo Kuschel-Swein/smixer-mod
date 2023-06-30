@@ -22,7 +22,11 @@ translations.
 
 # Found a bug in either sba or this mod?
 
-If you think you found a bug, please let me know via an issue.
+If found a bug/something isn't up-to-date in SBA please create
+a [Feature Request](https://github.com/Kuschel-Swein/smixer-mod/issues/new?assignees=&labels=enhancement&projects=&template=FEATURE-REQUEST.yml&title=%5BFeature%5D+).
+<br>
+If you found a bug in the Smixer mod itself, please create
+a [Bug Report](https://github.com/Kuschel-Swein/smixer-mod/issues/new?assignees=&labels=bug&projects=&template=BUG-REPORT.yml&title=%5BBug%5D+).
 
 # Building it yourself
 
