@@ -49,7 +49,7 @@ body:
       label: Crash Report
       description: |
         If your game crashed, please paste the crash report below.
-        If your crash report has a name starting with `hs_err_pid`, **do not post it here!** It contains your login credentials. Message us on Discord instead.
+        If your crash report has a name starting with `hs_err_pid`, **do not post it here!** It contains your login credentials. Message me on Discord instead.
   - type: markdown
     attributes:
       value: |
