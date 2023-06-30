@@ -13,6 +13,9 @@ the package names. So I just went with Smixer.
 
 To use this mod, first install the newest version (`v1.7.2` as of writing this) of SBA from their GitHub. Then
 additionally install this mod alongside it, you should now see how many bugs "magically" disappear.
+<br>
+Please note, that currently the only fully supported language is english, feel free to contribute any other
+translations.
 
 # Found a bug in either sba or this mod?
 
