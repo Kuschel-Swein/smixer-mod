@@ -1,5 +1,7 @@
 {
   "settings": {
-    "healthBarHideInRift": "Hide health bar while in the Rift"
+    "healthBarHideInRift": "Hide health bar while in the Rift",
+    "healthTextHideInRift": "Hide health text while in the Rift",
+    "healthShowInRift": "Show vanilla hearts in the Rift"
   }
 }

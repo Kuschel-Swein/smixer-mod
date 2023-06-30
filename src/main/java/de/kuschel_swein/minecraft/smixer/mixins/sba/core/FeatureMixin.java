@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,14 +23,6 @@ public abstract class FeatureMixin {
     @Final
     @Mutable
     private static Feature[] $VALUES;
-
-    /*@Unique
-    private static final Feature HEALTH_BAR_HIDE_IN_RIFT = createEnumConstant(
-            "HEALTH_BAR_HIDE_IN_RIFT",
-            501,
-            "smixer.settings.healthBarHideInRift",
-            false
-    );*/
 
     @Unique
     private static final Feature HEALTH_BAR_HIDE_IN_RIFT = createEnumConstant(
@@ -47,9 +40,25 @@ public abstract class FeatureMixin {
             false
     );
 
+    @Unique
+    private static final Feature HEALTH_SHOW_IN_RIFT = createEnumConstant(
+            "HEALTH_SHOW_IN_RIFT",
+            503,
+            "smixer.settings.healthShowInRift",
+            false
+    );
+
     @Shadow
     @Final
     private static Set<Feature> SETTINGS;
+
+    @Shadow
+    @Final
+    private static int ID_AT_PREVIOUS_UPDATE;
+
+    @Shadow
+    @Final
+    private int id;
 
     @Inject(
             method = "<clinit>",
@@ -70,12 +79,15 @@ public abstract class FeatureMixin {
     )
     private static void injectUpdatedConstants(CallbackInfo callback) {
         Feature.HEALTH_BAR.getSettings().add(MixedFeatureSetting.HEALTH_BAR_HIDE_IN_RIFT.getFeatureSetting());
+        Feature.HEALTH_TEXT.getSettings().add(MixedFeatureSetting.HEALTH_TEXT_HIDE_IN_RIFT.getFeatureSetting());
+        Feature.HIDE_HEALTH_BAR.getSettings().add(MixedFeatureSetting.HEALTH_SHOW_IN_RIFT.getFeatureSetting());
 
         // sort our new constants
         SETTINGS.addAll(
                 Arrays.asList(
                         HEALTH_BAR_HIDE_IN_RIFT,
-                        HEALTH_TEXT_HIDE_IN_RIFT
+                        HEALTH_TEXT_HIDE_IN_RIFT,
+                        HEALTH_SHOW_IN_RIFT
                 )
         );
     }
@@ -131,5 +143,15 @@ public abstract class FeatureMixin {
             EnumUtils.FeatureSetting... settings
     ) {
         throw new AssertionError();
+    }
+
+    @Inject(
+            method = "isNew",
+            at = @At("HEAD"),
+            cancellable = true,
+            remap = false
+    )
+    private void injectVariableCheckToIsNew(CallbackInfoReturnable<Boolean> callback) {
+        callback.setReturnValue((this.id > ID_AT_PREVIOUS_UPDATE));
     }
 }

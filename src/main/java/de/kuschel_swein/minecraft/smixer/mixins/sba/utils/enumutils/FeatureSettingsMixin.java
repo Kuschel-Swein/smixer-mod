@@ -30,6 +30,13 @@ public class FeatureSettingsMixin {
     );
 
     @Unique
+    private static final EnumUtils.FeatureSetting HEALTH_SHOW_IN_RIFT = createEnumConstant(
+            "HEALTH_SHOW_IN_RIFT",
+            "smixer.settings.healthShowInRift",
+            503
+    );
+
+    @Unique
     private static EnumUtils.FeatureSetting createEnumConstant(
             String internalName,
             String translationKey,

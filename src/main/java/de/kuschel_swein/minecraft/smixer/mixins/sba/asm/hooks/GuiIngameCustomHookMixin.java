@@ -1,6 +1,7 @@
 package de.kuschel_swein.minecraft.smixer.mixins.sba.asm.hooks;
 
 import codes.biscuit.skyblockaddons.asm.hooks.GuiIngameCustomHook;
+import de.kuschel_swein.minecraft.smixer.abstraction.sba.core.MixedFeature;
 import de.kuschel_swein.minecraft.smixer.contracts.sba.utils.MixedUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,7 +19,9 @@ public class GuiIngameCustomHookMixin {
     )
     private static void injectRiftCheckToHealthRenderer(CallbackInfoReturnable<Boolean> callback) {
         if (MixedUtils.getInstance().isInRift()) {
-            callback.setReturnValue(true);
+            if (MixedFeature.HEALTH_SHOW_IN_RIFT.isEnabled()) {
+                callback.setReturnValue(true);
+            }
         }
     }
 }

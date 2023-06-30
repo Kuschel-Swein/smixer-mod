@@ -5,7 +5,8 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 public enum MixedFeatureSetting {
 
     HEALTH_BAR_HIDE_IN_RIFT,
-    HEALTH_TEXT_HIDE_IN_RIFT;
+    HEALTH_TEXT_HIDE_IN_RIFT,
+    HEALTH_SHOW_IN_RIFT;
 
 
     private EnumUtils.FeatureSetting featureSetting;
