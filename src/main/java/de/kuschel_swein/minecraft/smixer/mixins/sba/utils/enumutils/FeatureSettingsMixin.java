@@ -37,6 +37,13 @@ public class FeatureSettingsMixin {
     );
 
     @Unique
+    private static final EnumUtils.FeatureSetting DEFENCE_TEXT_HIDE_IN_RIFT = createEnumConstant(
+            "DEFENCE_TEXT_HIDE_IN_RIFT",
+            "smixer.settings.defenceTextHideInRift",
+            504
+    );
+
+    @Unique
     private static EnumUtils.FeatureSetting createEnumConstant(
             String internalName,
             String translationKey,

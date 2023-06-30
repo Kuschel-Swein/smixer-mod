@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 @Mixin(DataUtils.class)
 public class DataUtilsMixin {
@@ -32,7 +33,7 @@ public class DataUtilsMixin {
     ) {
         ConfigValues configValues = SkyblockAddons.getInstance().getConfigValues();
         JsonObject languageConfig = configValues.getLanguageConfig();
-        
+
         languageConfig.add("smixer", loadSmixerLanguage(language));
     }
 
@@ -41,13 +42,14 @@ public class DataUtilsMixin {
         URL resourceUrl = SmixerMod.class.getClassLoader().getResource(
                 "lang/smixer/" + language.getPath() + ".json"
         );
-        assert resourceUrl != null;
 
         try {
+            Objects.requireNonNull(resourceUrl);
+
             String fileContent = IOUtils.toString(resourceUrl, StandardCharsets.UTF_8);
 
             return SkyblockAddons.getGson().fromJson(fileContent, JsonObject.class);
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             // well, too bad we can't load our lang file (it probably doesn't exist)
 
             return new JsonObject();

@@ -48,6 +48,14 @@ public abstract class FeatureMixin {
             false
     );
 
+    @Unique
+    private static final Feature DEFENCE_TEXT_HIDE_IN_RIFT = createEnumConstant(
+            "DEFENCE_TEXT_HIDE_IN_RIFT",
+            504,
+            "smixer.settings.defenceTextHideInRift",
+            false
+    );
+
     @Shadow
     @Final
     private static Set<Feature> SETTINGS;
@@ -82,13 +90,15 @@ public abstract class FeatureMixin {
         Feature.HEALTH_BAR.getSettings().add(MixedFeatureSetting.HEALTH_BAR_HIDE_IN_RIFT.getFeatureSetting());
         Feature.HEALTH_TEXT.getSettings().add(MixedFeatureSetting.HEALTH_TEXT_HIDE_IN_RIFT.getFeatureSetting());
         Feature.HIDE_HEALTH_BAR.getSettings().add(MixedFeatureSetting.HEALTH_SHOW_IN_RIFT.getFeatureSetting());
+        Feature.DEFENCE_TEXT.getSettings().add(MixedFeatureSetting.DEFENCE_TEXT_HIDE_IN_RIFT.getFeatureSetting());
 
         // sort our new constants
         SETTINGS.addAll(
                 Arrays.asList(
                         HEALTH_BAR_HIDE_IN_RIFT,
                         HEALTH_TEXT_HIDE_IN_RIFT,
-                        HEALTH_SHOW_IN_RIFT
+                        HEALTH_SHOW_IN_RIFT,
+                        DEFENCE_TEXT_HIDE_IN_RIFT
                 )
         );
     }

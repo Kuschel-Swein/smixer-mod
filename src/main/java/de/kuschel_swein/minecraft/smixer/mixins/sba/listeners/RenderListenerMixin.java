@@ -47,9 +47,13 @@ public class RenderListenerMixin {
             @Nullable ButtonLocation resizingGui, CallbackInfo callback) {
 
         if (resizingGui == null) {
-            if (feature == Feature.HEALTH_TEXT) {
-                if (MixedUtils.getInstance().isInRift()) {
+            if (MixedUtils.getInstance().isInRift()) {
+                if (feature == Feature.HEALTH_TEXT) {
                     if (MixedFeature.HEALTH_TEXT_HIDE_IN_RIFT.isEnabled()) {
+                        callback.cancel();
+                    }
+                } else if (feature == Feature.DEFENCE_TEXT) {
+                    if (MixedFeature.DEFENCE_TEXT_HIDE_IN_RIFT.isEnabled()) {
                         callback.cancel();
                     }
                 }
