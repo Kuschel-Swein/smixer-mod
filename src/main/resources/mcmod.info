@@ -1,0 +1,20 @@
+[
+    {
+        "modid": "smixer",
+        "name": "Smixer",
+        "description": "Re(s)mixes SBA",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": [
+            "Kuschel_Swein"
+        ],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": [
+            "skyblockaddons"
+        ]
+    }
+]
