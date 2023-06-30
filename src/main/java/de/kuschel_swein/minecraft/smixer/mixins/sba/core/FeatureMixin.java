@@ -19,7 +19,7 @@ import java.util.Set;
 @Mixin(Feature.class)
 public abstract class FeatureMixin {
 
-    @Shadow(remap = false)
+    @Shadow
     @Final
     @Mutable
     private static Feature[] $VALUES;
@@ -76,7 +76,7 @@ public abstract class FeatureMixin {
         setIdAtPreviousUpdate(500);
     }
 
-    @Accessor("ID_AT_PREVIOUS_UPDATE")
+    @Accessor(value = "ID_AT_PREVIOUS_UPDATE", remap = false)
     @SuppressWarnings("unused")
     public static void setIdAtPreviousUpdate(int id) {
         throw new AssertionError();

@@ -29,8 +29,9 @@ loom {
     forge {
         pack200Provider.set(Pack200Adapter())
         mixinConfig("mixins.smixer.json")
+
+        // required to use sba in dev-mode
         accessTransformer("src/main/resources/sba_at.cfg")
-        accessWidenerPath.set(file("src/main/resources/smixer.accesswidener"))
     }
 }
 
