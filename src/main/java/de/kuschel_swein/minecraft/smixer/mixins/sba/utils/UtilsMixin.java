@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
+import java.util.List;
 import java.util.Set;
 
 @Mixin(Utils.class)
@@ -48,10 +49,16 @@ public class UtilsMixin implements MixedUtils {
     private void injectRiftCheck(CallbackInfo callback) {
         // this isn't beautiful as we could also use the local vars for this,
         // BUT: there are like a million of them, so this is just the cleaner solution
-        String strippedLine = ScoreboardManager.getStrippedScoreboardLines().get(2);
+        List<String> strippedScoreboardLines = ScoreboardManager.getStrippedScoreboardLines();
 
-        // store if we are in the rift
-        this.isInRift = strippedLine.equals("Rift Dimension");
+        if (strippedScoreboardLines != null) {
+            String strippedLine = strippedScoreboardLines.get(2);
+
+            // store if we are in the rift
+            this.isInRift = (strippedLine != null && strippedLine.equals("Rift Dimension"));
+        } else {
+            this.isInRift = false;
+        }
     }
 
     @Unique
