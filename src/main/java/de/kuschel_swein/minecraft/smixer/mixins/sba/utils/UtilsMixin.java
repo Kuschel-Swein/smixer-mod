@@ -37,9 +37,9 @@ public class UtilsMixin implements MixedUtils {
             method = "parseSidebar",
             locals = LocalCapture.CAPTURE_FAILHARD,
             remap = false,
-            at = @At(
+            at = @At( // we could technically inject this check anywhere, but I guess its suited here the best
                     value = "INVOKE",
-                    target = "Lcodes/biscuit/skyblockaddons/core/Location;getScoreboardName()Ljava/lang/String;",
+                    target = "Lcodes/biscuit/skyblockaddons/utils/Utils;isOnSkyblock()Z",
                     shift = At.Shift.BY,
                     by = -2,
                     remap = false
@@ -48,10 +48,10 @@ public class UtilsMixin implements MixedUtils {
     private void injectRiftCheck(CallbackInfo callback) {
         // this isn't beautiful as we could also use the local vars for this,
         // BUT: there are like a million of them, so this is just the cleaner solution
-        String strippedLine = ScoreboardManager.getStrippedScoreboardLines().get(4);
+        String strippedLine = ScoreboardManager.getStrippedScoreboardLines().get(2);
 
         // store if we are in the rift
-        this.isInRift = strippedLine.equals("The Rift");
+        this.isInRift = strippedLine.equals("Rift Dimension");
     }
 
     @Unique
