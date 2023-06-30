@@ -19,4 +19,10 @@ translations.
 
 # Found a bug in either sba or this mod?
 
-If you think you found a bug, please let me know via an issue. Please follow the issue-template.
+If you think you found a bug, please let me know via an issue.
+
+# Building it yourself
+
+To build this mod yourself you have to do the usual gradle shenanigans. Additionally, you have to download the newest
+version (`v1.7.2` as of writing this) of SBA from their GitHub and place it in the `libs` folder. The name of this file
+is hard-coded in the build-script.
