@@ -1,0 +1,20 @@
+name: Feature request
+description: Request a new feature
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: What shall be added? Which bug in SBA is bothering you?
+    validations:
+      required: true
+  - type: textarea
+    id: crashReport
+    attributes:
+      label: Crash Report
+      description: |
+        If your game crashed because of SBA, please paste the crash report below.
+        If your crash report has a name starting with `hs_err_pid`, **do not post it here!** It contains your login credentials. Message us on Discord instead.
