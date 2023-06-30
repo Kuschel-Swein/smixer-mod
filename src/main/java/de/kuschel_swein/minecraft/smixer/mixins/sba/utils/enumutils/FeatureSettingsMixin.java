@@ -10,7 +10,7 @@ import java.util.Arrays;
 @Mixin(EnumUtils.FeatureSetting.class)
 public class FeatureSettingsMixin {
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     @Mutable
     private static EnumUtils.FeatureSetting[] $VALUES;

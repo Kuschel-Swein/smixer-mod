@@ -18,7 +18,7 @@ import java.util.Set;
 public class UtilsMixin implements MixedUtils {
 
     @Final
-    @Shadow
+    @Shadow(remap = false)
     private static Set<String> SKYBLOCK_IN_ALL_LANGUAGES;
 
     @Unique

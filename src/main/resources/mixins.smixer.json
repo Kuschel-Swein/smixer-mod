@@ -5,7 +5,6 @@
   ],
   "verbose": true,
   "mixins": [
-    "sba.SkyblockAddonsMixin",
     "sba.asm.hooks.GuiIngameCustomHookMixin",
     "sba.core.FeatureMixin",
     "sba.listeners.GuiScreenListenerMixin",

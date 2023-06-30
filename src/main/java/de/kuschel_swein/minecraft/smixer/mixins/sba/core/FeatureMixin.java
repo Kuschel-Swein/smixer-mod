@@ -19,7 +19,7 @@ import java.util.Set;
 @Mixin(Feature.class)
 public abstract class FeatureMixin {
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     @Mutable
     private static Feature[] $VALUES;
@@ -56,15 +56,15 @@ public abstract class FeatureMixin {
             false
     );
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static Set<Feature> SETTINGS;
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private static int ID_AT_PREVIOUS_UPDATE;
 
-    @Shadow
+    @Shadow(remap = false)
     @Final
     private int id;
 
