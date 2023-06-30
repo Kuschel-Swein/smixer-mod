@@ -69,6 +69,7 @@ public abstract class FeatureMixin {
     }
 
     @Accessor("ID_AT_PREVIOUS_UPDATE")
+    @SuppressWarnings("unused")
     public static void setIdAtPreviousUpdate(int id) {
         throw new AssertionError();
     }
@@ -133,6 +134,7 @@ public abstract class FeatureMixin {
     }
 
     @Invoker("<init>")
+    @SuppressWarnings("unused")
     public static Feature invokeInit(
             String internalName,
             int internalId,

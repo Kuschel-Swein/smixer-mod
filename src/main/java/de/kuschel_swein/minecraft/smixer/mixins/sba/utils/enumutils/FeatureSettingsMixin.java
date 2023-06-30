@@ -62,6 +62,7 @@ public class FeatureSettingsMixin {
     }
 
     @Invoker("<init>")
+    @SuppressWarnings("unused")
     public static EnumUtils.FeatureSetting invokeInit(
             String internalName,
             int internalId,
