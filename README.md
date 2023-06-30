@@ -3,6 +3,9 @@
 Smixer is a minecraft mod that should be used together with
 the [SkyblockAddons Mod by Biscuit](https://github.com/BiscuitDevelopment/SkyblockAddons). Sadly SBA is End-Of-Life and
 no longer receives updates, therefore this mod exists. It fixes a lot of its bugs by using so-called "Mixins".
+<br>
+**A word of warning:** As this mod is in a very early stage crashes are very likely to happen, please report them in an
+issue!
 
 ## Why did I choose the name "Smixer"?
 
