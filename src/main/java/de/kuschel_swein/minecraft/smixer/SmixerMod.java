@@ -16,12 +16,12 @@ public class SmixerMod {
 
     public static final String MOD_NAME = "Smixer";
 
-    public static final String VERSION = "1.0.0";
+    public static final String VERSION = "$VERSION";
 
-    private static final Logger LOGGER = LogManager.getLogger("Smixer");
+    private static final Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
-        LOGGER.info("Successfully enabled Smixer!");
+        LOGGER.info("Successfully enabled " + MOD_NAME + "!");
     }
 }
