@@ -2,10 +2,15 @@
   "compatibilityLevel": "JAVA_8",
   "package": "de.kuschel_swein.minecraft.smixer.mixins",
   "client": [
+    "sba.gui.SettingsGuiMixin",
+    "sba.gui.SkyblockAddonsGuiMixin",
+    "sba.gui.buttons.ButtonNormalMixin",
+    "sba.gui.buttons.ButtonSettingsMixin"
   ],
   "verbose": true,
   "mixins": [
     "sba.asm.hooks.GuiIngameCustomHookMixin",
+    "sba.config.ConfigValuesMixin",
     "sba.core.FeatureMixin",
     "sba.listeners.GuiScreenListenerMixin",
     "sba.listeners.RenderListenerMixin",

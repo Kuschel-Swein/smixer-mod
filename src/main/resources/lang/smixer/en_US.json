@@ -3,6 +3,14 @@
     "healthBarHideInRift": "Hide health bar while in the Rift",
     "healthTextHideInRift": "Hide health text while in the Rift",
     "healthShowInRift": "Show vanilla hearts in the Rift",
-    "defenceTextHideInRift": "Hide defence text while in the Rift"
+    "defenceTextHideInRift": "Hide defence text while in the Rift",
+    "messages": {
+      "replacement": {
+        "replaced": "Feature replaced",
+        "replacedWith": "This feature was replaced by the %mod% mod.",
+        "isInstalled": "You already have the replacement mod installed.",
+        "isNotInstalled": "You have NOT installed the replacement mod."
+      }
+    }
   }
 }
