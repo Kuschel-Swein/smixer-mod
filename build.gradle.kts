@@ -1,5 +1,7 @@
 import de.undercouch.gradle.tasks.download.Download
 import dev.architectury.pack200.java.Pack200Adapter
+import java.text.NumberFormat
+import java.util.*
 
 plugins {
     id("gg.essential.loom")
@@ -7,10 +9,38 @@ plugins {
     id("dev.architectury.architectury-pack200")
     id("com.github.johnrengelman.shadow")
     id("de.undercouch.download") version "5.4.0"
+    id("net.kyori.blossom") version "1.3.1"
 }
 
 group = "de.kuschel_swein.minecraft.smixer"
 version = "1.0.0"
+
+blossom {
+    val modVersion = project.version;
+
+    if (project.hasProperty("isCiBuild")) {
+        if (!project.hasProperty("buildNumber") || !project.hasProperty("runAttempt")) {
+            throw InvalidUserDataException("Invalid CI-Parameters given!")
+        }
+
+        val buildNumber = project.property("buildNumber")
+        val runAttempt = project.property("runAttempt")
+
+        val numberFormatter = NumberFormat.getIntegerInstance(Locale.US)
+        val runAttemptNumber = numberFormatter.parse(runAttempt.toString()).toInt()
+        val shouldAddRunAttempt = (runAttemptNumber > 1)
+
+        if (shouldAddRunAttempt) {
+            project.setProperty("buildNumber", "${buildNumber}.${runAttemptNumber - 1}")
+        }
+
+        project.version = "${project.version}+" + project.property("buildNumber")
+
+    }
+
+    replaceTokenIn("src/main/java/de/kuschel_swein/minecraft/smixer/SmixerMod.java")
+    replaceToken("\$VERSION", modVersion)
+}
 
 loom {
     runConfigs {
