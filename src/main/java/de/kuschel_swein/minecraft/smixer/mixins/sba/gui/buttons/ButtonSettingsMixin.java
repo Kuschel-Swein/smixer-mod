@@ -19,11 +19,11 @@ public class ButtonSettingsMixin {
 
     @Unique
     private static final ResourceLocation QUESTION_MARK = new ResourceLocation(
-            "skyblockaddons",
-            "flags/en_US.png" // ToDo: change this to a useful icon
+            "smixer",
+            "gui/question.png"
     );
 
-    @Shadow
+    @Shadow(remap = false)
     private static ResourceLocation GEAR;
 
     @Unique
