@@ -22,6 +22,7 @@ jobs:
     env:
         ORG_GRADLE_PROJECT_buildNumber: ${{ github.run_number }}
         UPLOAD_ARTIFACT_ENABLED: ${{ true }}
+        SBA_VERSION: '1.7.2'
 
     steps:
     - uses: actions/checkout@v3
@@ -31,6 +32,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: 'gradle'
+    - name: Download current SBA Mod from their GitHub
+      run: 'cd ./libs && wget https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v${{ env.sba_version }}/SkyblockAddons-${{ env.sba_version }}-for-MC-1.8.9.jar'
     - name: Grand execute permission for the gradle script
       run: 'chmod +x ./gradlew'
     - name: Build with Gradle
