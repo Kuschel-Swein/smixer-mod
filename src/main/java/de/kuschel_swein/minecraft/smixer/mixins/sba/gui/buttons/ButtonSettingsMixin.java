@@ -36,8 +36,7 @@ public class ButtonSettingsMixin {
                     target = "Lcodes/biscuit/skyblockaddons/gui/buttons/ButtonSettings;GEAR:Lnet/minecraft/util/ResourceLocation;",
                     opcode = Opcodes.GETSTATIC,
                     remap = false
-            ),
-            remap = false
+            )
     )
     private ResourceLocation injectReplacedFeatureIconChangeToGearField() {
         if (this.replacementFeature == null) {
