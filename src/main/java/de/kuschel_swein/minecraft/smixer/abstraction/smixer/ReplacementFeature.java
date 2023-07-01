@@ -1,6 +1,7 @@
 package de.kuschel_swein.minecraft.smixer.abstraction.smixer;
 
 import codes.biscuit.skyblockaddons.core.Feature;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -21,20 +22,22 @@ public class ReplacementFeature {
     }
 
 
+    @Nullable
     private final String modName;
 
+    @Nullable
     private final String modId;
 
-    private ReplacementFeature(String modName, String modId) {
+    private ReplacementFeature(@Nullable String modName, @Nullable String modId) {
         this.modName = modName;
         this.modId = modId;
     }
 
-    public static ReplacementFeature soft(String modName, String modId) {
+    public static ReplacementFeature soft(@NotNull String modName, @NotNull String modId) {
         return new ReplacementFeature(modName, modId);
     }
 
-    public static ReplacementFeature soft(String modName) {
+    public static ReplacementFeature soft(@NotNull String modName) {
         return new ReplacementFeature(modName, modName.toLowerCase(Locale.US));
     }
 
@@ -43,14 +46,16 @@ public class ReplacementFeature {
     }
 
     @Nullable
-    public static ReplacementFeature forFeature(Feature feature) {
+    public static ReplacementFeature forFeature(@NotNull Feature feature) {
         return REPLACEMENT_FEATURES.get(feature);
     }
 
+    @Nullable
     public String getModName() {
         return this.modName;
     }
 
+    @Nullable
     public String getModId() {
         return this.modId;
     }
