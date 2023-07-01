@@ -52,4 +52,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Smixer v${{ env.project_version }}+${{ env.ORG_GRADLE_PROJECT_buildNumber }}
-        path: build/libs/Smixer-${{ env.project_version }}.jar
+        path: build/libs/*
