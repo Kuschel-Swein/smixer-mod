@@ -8,12 +8,14 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonTextNew;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import de.kuschel_swein.minecraft.smixer.abstraction.smixer.ReplacementFeature;
 import net.minecraft.client.gui.GuiScreen;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
@@ -110,5 +112,23 @@ public abstract class SettingsGuiMixin extends GuiScreen {
             args.set(1, newText);
             args.set(3, newColor.getRGB());
         }
+    }
+
+    @Redirect(
+            method = "drawScreen",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/util/List;size()I",
+                    opcode = Opcodes.INVOKEVIRTUAL,
+                    remap = false
+            )
+    )
+    private int redirectSettingsSizeToAccountForInfoScreen(List<Feature> settings) {
+        if (this.replacementFeature == null) {
+            return settings.size();
+        }
+
+        // we need to "fake" the size here as otherwise the background wouldn't be drawn correctly
+        return 1;
     }
 }
