@@ -9,7 +9,7 @@
         "replaced": "Feature replaced",
         "replacedWith": "This feature was replaced by the %mod% mod",
         "isInstalled": "You already have the replacement mod installed.",
-        "isNotInstalled": "You have the replacement NOT installed."
+        "isNotInstalled": "You have NOT installed the replacement mod."
       }
     }
   }
