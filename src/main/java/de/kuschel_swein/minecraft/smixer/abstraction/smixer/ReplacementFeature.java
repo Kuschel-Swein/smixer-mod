@@ -65,6 +65,6 @@ public class ReplacementFeature {
     }
 
     public boolean isHard() {
-        return (this.modName == null);
+        return (this.modName == null || this.modId == null);
     }
 }
