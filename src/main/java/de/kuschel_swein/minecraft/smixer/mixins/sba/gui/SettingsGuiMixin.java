@@ -85,7 +85,7 @@ public abstract class SettingsGuiMixin extends GuiScreen {
         }
     }
 
-    @Shadow
+    @Shadow(remap = false)
     protected abstract double getRowHeightSetting(double row);
 
     @ModifyArgs(
