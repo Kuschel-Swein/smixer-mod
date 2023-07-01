@@ -5,7 +5,12 @@
     "healthShowInRift": "Show vanilla hearts in the Rift",
     "defenceTextHideInRift": "Hide defence text while in the Rift",
     "messages": {
-      "featureReplaced": "Feature replaced"
+      "replacement": {
+        "replaced": "Feature replaced",
+        "replacedWith": "Feature was replaced by the %mod% mod",
+        "isInstalled": "You already have the replacement mod installed.",
+        "isNotInstalled": "You have the replacement NOT installed."
+      }
     }
   }
 }

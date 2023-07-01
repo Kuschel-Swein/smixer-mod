@@ -11,25 +11,22 @@ public class ReplacementFeature {
     private static final Map<Feature, ReplacementFeature> REPLACEMENT_FEATURES = new HashMap<>();
 
     static {
-        REPLACEMENT_FEATURES.put(Feature.HEALTH_TEXT, ReplacementFeature.hard());
+        REPLACEMENT_FEATURES.put(Feature.HEALTH_TEXT, ReplacementFeature.soft("neu"));
     }
 
 
     private final String modId;
 
-    private final String modUrl;
-
-    private ReplacementFeature(String modId, String modUrl) {
+    private ReplacementFeature(String modId) {
         this.modId = modId;
-        this.modUrl = modUrl;
     }
 
-    public static ReplacementFeature soft(String modId, String modUrl) {
-        return new ReplacementFeature(modId, modUrl);
+    public static ReplacementFeature soft(String modId) {
+        return new ReplacementFeature(modId);
     }
 
     public static ReplacementFeature hard() {
-        return new ReplacementFeature(null, null);
+        return new ReplacementFeature(null);
     }
 
     @Nullable
@@ -39,10 +36,6 @@ public class ReplacementFeature {
 
     public String getModId() {
         return this.modId;
-    }
-
-    public String getModUrl() {
-        return this.modUrl;
     }
 
     public boolean isSoft() {

@@ -53,7 +53,7 @@ public class ButtonNormalMixin {
         if (this.replacementFeature != null) {
             // it's way easier to manually calculate the alpha value instead of capturing the locals
             int alpha = (colorValue >> 24) & 0xff;
-            String newText = Translations.getMessage("smixer.settings.messages.featureReplaced");
+            String newText = Translations.getMessage("smixer.settings.messages.replacement.replaced");
             Color newColor = new Color(222, 68, 76, alpha);
 
             args.set(1, newText);
