@@ -12,6 +12,12 @@ public class ReplacementFeature {
     private static final Map<Feature, ReplacementFeature> REPLACEMENT_FEATURES = new HashMap<>();
 
     static {
+        REPLACEMENT_FEATURES.put(Feature.FANCY_WARP_MENU, ReplacementFeature.soft("FancyWarpMenu"));
+
+        // replaced by NEU
+        REPLACEMENT_FEATURES.put(Feature.DUNGEONS_MAP_DISPLAY, ReplacementFeature.soft("NotEnoughUpdates"));
+        REPLACEMENT_FEATURES.put(Feature.LOCK_SLOTS, ReplacementFeature.soft("NotEnoughUpdates"));
+        REPLACEMENT_FEATURES.put(Feature.SHOW_BACKPACK_PREVIEW, ReplacementFeature.soft("NotEnoughUpdates"));
     }
 
 
