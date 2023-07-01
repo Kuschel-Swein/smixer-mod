@@ -57,6 +57,13 @@ repositories {
     maven("https://repo.spongepowered.org/repository/maven-public")
 }
 
+sourceSets {
+    main {
+        // forge wants our resources in the classes directory
+        output.setResourcesDir(java.classesDirectory)
+    }
+}
+
 tasks {
     jar {
         from(embed.files.map { zipTree(it) })
