@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class ReplacementFeature {
@@ -11,27 +12,37 @@ public class ReplacementFeature {
     private static final Map<Feature, ReplacementFeature> REPLACEMENT_FEATURES = new HashMap<>();
 
     static {
-        REPLACEMENT_FEATURES.put(Feature.HEALTH_TEXT, ReplacementFeature.soft("neu"));
     }
 
+
+    private final String modName;
 
     private final String modId;
 
-    private ReplacementFeature(String modId) {
+    private ReplacementFeature(String modName, String modId) {
+        this.modName = modName;
         this.modId = modId;
     }
 
-    public static ReplacementFeature soft(String modId) {
-        return new ReplacementFeature(modId);
+    public static ReplacementFeature soft(String modName, String modId) {
+        return new ReplacementFeature(modName, modId);
+    }
+
+    public static ReplacementFeature soft(String modName) {
+        return new ReplacementFeature(modName, modName.toLowerCase(Locale.US));
     }
 
     public static ReplacementFeature hard() {
-        return new ReplacementFeature(null);
+        return new ReplacementFeature(null, null);
     }
 
     @Nullable
     public static ReplacementFeature forFeature(Feature feature) {
         return REPLACEMENT_FEATURES.get(feature);
+    }
+
+    public String getModName() {
+        return this.modName;
     }
 
     public String getModId() {
@@ -43,6 +54,6 @@ public class ReplacementFeature {
     }
 
     public boolean isHard() {
-        return (this.modId == null);
+        return (this.modName == null);
     }
 }

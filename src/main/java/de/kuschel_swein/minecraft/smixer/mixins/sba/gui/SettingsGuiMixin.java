@@ -53,8 +53,10 @@ public abstract class SettingsGuiMixin extends GuiScreen {
 
             int halfWidth = (this.width / 2);
             double y = this.getRowHeightSetting(1);
-            String replacementId = this.replacementFeature.getModId();
-            boolean isReplacementInstalled = SkyblockAddons.getInstance().getUtils().isModLoaded(replacementId);
+            String replacementName = this.replacementFeature.getModName();
+            boolean isReplacementInstalled = SkyblockAddons.getInstance().getUtils().isModLoaded(
+                    this.replacementFeature.getModId()
+            );
 
             this.buttonList.addAll(
                     Arrays.asList(
@@ -63,7 +65,7 @@ public abstract class SettingsGuiMixin extends GuiScreen {
                                     (int) (y - 10),
                                     Translations.getMessage(
                                             "smixer.settings.messages.replacement.replacedWith",
-                                            replacementId
+                                            replacementName
                                     ),
                                     true,
                                     0xFFFFFFFF
@@ -75,7 +77,7 @@ public abstract class SettingsGuiMixin extends GuiScreen {
                                             Translations.getMessage("smixer.settings.messages.replacement.isInstalled") :
                                             Translations.getMessage(
                                                     "smixer.settings.messages.replacement.isNotInstalled",
-                                                    replacementId
+                                                    replacementName
                                             ),
                                     true,
                                     isReplacementInstalled ? 0x44bd32 : 0xfbc531
