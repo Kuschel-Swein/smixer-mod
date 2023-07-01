@@ -1,3 +1,4 @@
+import de.undercouch.gradle.tasks.download.Download
 import dev.architectury.pack200.java.Pack200Adapter
 
 plugins {
@@ -5,6 +6,7 @@ plugins {
     id("io.github.juuxel.loom-quiltflower")
     id("dev.architectury.architectury-pack200")
     id("com.github.johnrengelman.shadow")
+    id("de.undercouch.download") version "5.4.0"
 }
 
 group = "de.kuschel_swein.minecraft.smixer"
@@ -49,12 +51,23 @@ dependencies {
     compileOnly("org.spongepowered:mixin:0.8.5-SNAPSHOT")
     annotationProcessor("org.spongepowered:mixin:0.8.5-SNAPSHOT:processor")
 
-    modImplementation(files("libs/SkyblockAddons-1.7.2-for-MC-1.8.9.jar"))
+    modImplementation(files(
+            "libs/SkyblockAddons-" + project.property("sba.version") + "-for-MC-1.8.9.jar"
+    ))
 }
 
 repositories {
     maven("https://repo.essential.gg/repository/maven-public")
     maven("https://repo.spongepowered.org/repository/maven-public")
+}
+
+task<Download>("downloadSkyblockAddons") {
+    group = "build setup"
+
+    val sbaVersion = project.property("sba.version");
+
+    src("https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v$sbaVersion/SkyblockAddons-$sbaVersion-for-MC-1.8.9.jar")
+    dest("libs")
 }
 
 sourceSets {
@@ -64,7 +77,9 @@ sourceSets {
     }
 }
 
+
 tasks {
+
     jar {
         from(embed.files.map { zipTree(it) })
 
