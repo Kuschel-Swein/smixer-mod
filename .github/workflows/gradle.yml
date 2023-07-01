@@ -19,6 +19,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+        ORG_GRADLE_PROJECT_buildNumber: ${{ github.run_number }}
+        UPLOAD_ARTIFACT_ENABLED: ${{ true }}
 
     steps:
     - uses: actions/checkout@v3
@@ -28,5 +31,22 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: 'gradle'
+    - name: Grand execute permission for the gradle script
+      run: 'chmox +x ./gradlew'
     - name: Build with Gradle
-      run: 'chmod +x ./gradlew && ./gradlew build'
+      run: './gradlew build --no-daemon'
+    - name: Read Project Version
+      id: read_project_version
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED }}
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: gradle.properties
+        property: version
+    - name: Upload Artifact
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED }}
+      env:
+        project_version: ${{ steps.read_project_version.outputs.value }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: Smixer v${{ env.project_version }}+${{ env.ORG_GRADLE_PROJECT_buildNumber }}
+        path: build/libs/*
