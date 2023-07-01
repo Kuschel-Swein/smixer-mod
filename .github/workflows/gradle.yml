@@ -32,7 +32,7 @@ jobs:
         distribution: 'temurin'
         cache: 'gradle'
     - name: Grand execute permission for the gradle script
-      run: 'chmox +x ./gradlew'
+      run: 'chmod +x ./gradlew'
     - name: Build with Gradle
       run: './gradlew build --no-daemon'
     - name: Read Project Version
