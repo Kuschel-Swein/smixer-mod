@@ -7,7 +7,7 @@
     "messages": {
       "replacement": {
         "replaced": "Feature replaced",
-        "replacedWith": "Feature was replaced by the %mod% mod",
+        "replacedWith": "This feature was replaced by the %mod% mod",
         "isInstalled": "You already have the replacement mod installed.",
         "isNotInstalled": "You have the replacement NOT installed."
       }
