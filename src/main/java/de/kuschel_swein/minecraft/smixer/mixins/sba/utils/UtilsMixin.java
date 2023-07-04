@@ -18,6 +18,9 @@ import java.util.Set;
 @Mixin(Utils.class)
 public class UtilsMixin implements MixedUtils {
 
+    @Unique
+    private static final int RIFT_SCOREBOARD_LINE = 2;
+
     @Final
     @Shadow(remap = false)
     private static Set<String> SKYBLOCK_IN_ALL_LANGUAGES;
@@ -51,8 +54,8 @@ public class UtilsMixin implements MixedUtils {
         // BUT: there are like a million of them, so this is just the cleaner solution
         List<String> strippedScoreboardLines = ScoreboardManager.getStrippedScoreboardLines();
 
-        if (strippedScoreboardLines != null) {
-            String strippedLine = strippedScoreboardLines.get(2);
+        if (strippedScoreboardLines != null && (strippedScoreboardLines.size() > RIFT_SCOREBOARD_LINE)) {
+            String strippedLine = strippedScoreboardLines.get(RIFT_SCOREBOARD_LINE);
 
             // store if we are in the rift
             this.isInRift = (strippedLine != null && strippedLine.equals("Rift Dimension"));
