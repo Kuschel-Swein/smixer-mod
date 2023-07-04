@@ -54,7 +54,7 @@ public class UtilsMixin implements MixedUtils {
         // BUT: there are like a million of them, so this is just the cleaner solution
         List<String> strippedScoreboardLines = ScoreboardManager.getStrippedScoreboardLines();
 
-        if (strippedScoreboardLines != null) {
+        if (strippedScoreboardLines != null && (strippedScoreboardLines.size() > RIFT_SCOREBOARD_LINE)) {
             String strippedLine = strippedScoreboardLines.get(RIFT_SCOREBOARD_LINE);
 
             // store if we are in the rift
